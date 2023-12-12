@@ -1,6 +1,27 @@
+## Development
+### backend
+
+   
+
+
+    cd backend-node-sql
+    yarn
+    yarn dev
+
+    
+
+### front
+
+ 
+    cd my-app
+    yarn
+    yarn start
+   
+
+
 ## Production
 
-```bash
+```
 docker network create fullstack
 ```
 ### backend
