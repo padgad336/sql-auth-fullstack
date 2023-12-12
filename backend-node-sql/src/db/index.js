@@ -1,13 +1,18 @@
 const { Sequelize } = require("sequelize");
-
+import config from 'config';
+console.log(
+    `${config.get('db.NAME')}`, 
+    `${config.get('db.USER')}`, 
+    `${config.get('db.PASSWORD')}`,
+);
 const sequelize = new Sequelize(
-    'teach_tes', // name DB 
-    'root', // user 
-    '', //password
+    `${config.get('db.NAME')}`, // name DB 
+    `${config.get('db.USER')}`, // user 
+    `${config.get('db.PASSWORD')}`, //password
     {
-        host: 'localhost',
-        port: 3306,
-        dialect: 'mysql', // 'mysql' | 'mariadb' | 'postgres' | 'mssql'  
+        host: `${config.get('db.HOST')}`,
+        port: `${config.get('db.PORT')}`,
+        dialect: `${config.get('db.dialect')}`, // 'mysql' | 'mariadb' | 'postgres' | 'mssql'  
         define: {
             timestamps: false
         }

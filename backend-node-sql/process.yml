@@ -1,0 +1,12 @@
+apps:
+  - script       : 'src/app.js'
+    node_args    : '-r @babel/register -r dotenv/config'
+    name         : 'app'
+    watch        :
+      - 'src'
+    ignore_watch :
+      - 'src/*.test.js'
+    env          :
+      NODE_ENV   : development
+    max_restarts : 300
+    restart_delay: 600000

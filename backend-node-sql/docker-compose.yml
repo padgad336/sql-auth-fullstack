@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  app:
+    depends_on:
+      - mysqldb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 4000:4000
+    environment:
+      TZ: Asia/Bangkok
+    container_name: app
+    hostname: app
+    networks:
+      - fullstack
+  mysqldb:
+    image: mysql:5.7
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
+      - MYSQL_DATABASE=$DB_NAME
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - $DB_PORT:$DB_PORT
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - fullstack
+volumes: 
+  db:
+networks:
+  fullstack:
+    external: true

@@ -1,0 +1,15 @@
+version: "3"
+services:
+  web:
+    build: .
+    restart: always
+    ports:
+      - 8080:80
+    container_name: web
+    hostname: web
+    networks:
+      - fullstack
+
+networks:
+  fullstack:
+    external: true 
